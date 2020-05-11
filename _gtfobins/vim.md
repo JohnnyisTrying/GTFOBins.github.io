@@ -103,7 +103,8 @@ functions:
         ^[
         w
   file-read:
-    - code: vim file_to_read
+    - code: |
+        vim file_to_read -es '+%print' '+:q!' /dev/stdin
   library-load:
     - description: This requires that `vim` is compiled with Python support. Prepend `:py3` for Python 3.
       code: vim -c ':py import vim; from ctypes import cdll; cdll.LoadLibrary("lib.so"); vim.command(":q!")'
